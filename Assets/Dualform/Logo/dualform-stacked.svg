@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 180" width="222" height="180">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&amp;family=Inter:wght@500&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="222" height="180" fill="#F3EEE4"/>
+  <g transform="translate(59,13) scale(0.81)" shape-rendering="geometricPrecision">
+    <polygon points="24,0 72,0 48,96 0,96"        fill="#0F3D33"/>
+    <polygon points="80,10 128,10 104,106 56,106" fill="#C8643C"/>
+  </g>
+  <line x1="95" y1="107" x2="128" y2="107" stroke="#C8643C" stroke-width="0.75" shape-rendering="crispEdges"/>
+  <text x="111" y="131"
+    text-anchor="middle"
+    font-family="'Fraunces', Georgia, serif"
+    font-weight="700" font-size="30" fill="#0F3D33"
+    letter-spacing="-1">DUALFORM</text>
+  <text x="111" y="150"
+    text-anchor="middle"
+    font-family="'Inter', system-ui, sans-serif"
+    font-weight="500" font-size="9.5" fill="#9A8C70"
+    letter-spacing="6">PROPERTY CO.</text>
+</svg>

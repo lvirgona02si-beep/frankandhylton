@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dualform Property Co. — Logo System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1A1712;
+      font-family: 'Inter', system-ui, sans-serif;
+      padding: 64px 56px 104px;
+      min-height: 100vh;
+    }
+    .page-header {
+      margin-bottom: 64px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #2E2B24;
+    }
+    .page-header h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 22px;
+      color: #F3EEE4;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .page-header p {
+      font-size: 10px;
+      color: #4A4540;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .section { margin-bottom: 56px; }
+    .section-label {
+      font-size: 9.5px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #3E3A34;
+      margin-bottom: 20px;
+    }
+    .card {
+      display: inline-block;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    }
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    hr.divider {
+      border: none;
+      border-top: 1px solid #2E2B24;
+      margin: 60px 0;
+    }
+    .palette-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .swatch { text-align: center; }
+    .swatch-box { width: 56px; height: 56px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); }
+    .swatch p { color: #3E3A34; font-size: 8px; letter-spacing: 1px; margin-top: 7px; line-height: 1.7; text-transform: uppercase; }
+    .usage-card {
+      background: #201D17;
+      border-radius: 10px;
+      padding: 24px 28px;
+      max-width: 520px;
+      border: 1px solid #2E2B24;
+    }
+    .usage-card p { color: #9A8C70; font-size: 11px; line-height: 2; }
+    .usage-card strong { display: block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; font-weight: 500; }
+    .usage-card .do strong  { color: #5E8C6A; }
+    .usage-card .dont strong { color: #C8643C; margin-top: 18px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>Dualform Property Co.</h1>
+    <p>Logo System · Brand Reference</p>
+  </div>
+
+  <!-- ─── 01 PRIMARY HORIZONTAL ─────────────────────────────────────────── -->
+  <!--
+    Mark construction (reference units):
+      Left blade:  (24,0)→(72,0)→(48,96)→(0,96)   — 48px wide, −14° skew
+      Right blade: (80,10)→(128,10)→(104,106)→(56,106) — 8px gap, 10px down
+    Total mark bounding box: 128 × 106 px (reference)
+    DO NOT add gradients, shadows, house/roof/key imagery, or blue.
+  -->
+  <div class="section">
+    <p class="section-label">01 — Primary Horizontal · Sandstone</p>
+    <div class="card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 112" width="420" height="112">
+        <rect width="420" height="112" fill="#F3EEE4"/>
+
+        <!-- Icon mark @ 0.84 scale → 107 × 89 px, centred in 112px height (y offset 11) -->
+        <g transform="translate(22,11) scale(0.84)" shape-rendering="geometricPrecision">
+          <polygon points="24,0 72,0 48,96 0,96"        fill="#0F3D33"/>
+          <polygon points="80,10 128,10 104,106 56,106" fill="#C8643C"/>
+        </g>
+
+        <!-- Thin Terracotta vertical rule separating mark from wordmark -->
+        <line x1="143" y1="17" x2="143" y2="96"
+              stroke="#C8643C" stroke-width="1" shape-rendering="crispEdges"/>
+
+        <!-- Wordmark -->
+        <text x="158" y="53"
+          font-family="'Fraunces', Georgia, serif"
+          font-weight="700" font-size="38" fill="#0F3D33"
+          letter-spacing="-1">DUALFORM</text>
+        <text x="161" y="74"
+          font-family="'Inter', system-ui, sans-serif"
+          font-weight="500" font-size="10.5" fill="#9A8C70"
+          letter-spacing="7">PROPERTY CO.</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ─── 02 REVERSED ───────────────────────────────────────────────────── -->
+  <div class="section">
+    <p class="section-label">02 — Reversed · Forest Green</p>
+    <div class="card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 112" width="420" height="112">
+        <rect width="420" height="112" fill="#0F3D33"/>
+        <g transform="translate(22,11) scale(0.84)" shape-rendering="geometricPrecision">
+          <polygon points="24,0 72,0 48,96 0,96"        fill="#F3EEE4"/>
+          <polygon points="80,10 128,10 104,106 56,106" fill="#E08A57"/>
+        </g>
+        <!-- Rule in lighter Terracotta on Forest Green -->
+        <line x1="143" y1="17" x2="143" y2="96"
+              stroke="#E08A57" stroke-width="1" stroke-opacity="0.6" shape-rendering="crispEdges"/>
+        <text x="158" y="53"
+          font-family="'Fraunces', Georgia, serif"
+          font-weight="700" font-size="38" fill="#F3EEE4"
+          letter-spacing="-1">DUALFORM</text>
+        <text x="161" y="74"
+          font-family="'Inter', system-ui, sans-serif"
+          font-weight="500" font-size="10.5" fill="#9A8C70"
+          letter-spacing="7">PROPERTY CO.</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ─── 03 STACKED + 04 ICON ONLY ─────────────────────────────────────── -->
+  <div class="section">
+    <p class="section-label">03 — Stacked &nbsp;&nbsp;&nbsp;&nbsp; 04 — Icon Only</p>
+    <div class="row">
+
+      <!-- Stacked: Sandstone -->
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 180" width="222" height="180">
+          <rect width="222" height="180" fill="#F3EEE4"/>
+          <!--
+            Icon centred: 128*0.81=104px wide → offset=(222-104)/2=59
+            Height: 106*0.81=86px → from y=13 to y=99
+          -->
+          <g transform="translate(59,13) scale(0.81)" shape-rendering="geometricPrecision">
+            <polygon points="24,0 72,0 48,96 0,96"        fill="#0F3D33"/>
+            <polygon points="80,10 128,10 104,106 56,106" fill="#C8643C"/>
+          </g>
+          <!-- Thin Terracotta hairline rule — bridges mark to wordmark -->
+          <line x1="95" y1="107" x2="128" y2="107"
+                stroke="#C8643C" stroke-width="0.75" shape-rendering="crispEdges"/>
+          <text x="111" y="131"
+            text-anchor="middle"
+            font-family="'Fraunces', Georgia, serif"
+            font-weight="700" font-size="30" fill="#0F3D33"
+            letter-spacing="-1">DUALFORM</text>
+          <text x="111" y="150"
+            text-anchor="middle"
+            font-family="'Inter', system-ui, sans-serif"
+            font-weight="500" font-size="9.5" fill="#9A8C70"
+            letter-spacing="6">PROPERTY CO.</text>
+        </svg>
+      </div>
+
+      <!-- Stacked: Forest Green -->
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 180" width="222" height="180">
+          <rect width="222" height="180" fill="#0F3D33"/>
+          <g transform="translate(59,13) scale(0.81)" shape-rendering="geometricPrecision">
+            <polygon points="24,0 72,0 48,96 0,96"        fill="#F3EEE4"/>
+            <polygon points="80,10 128,10 104,106 56,106" fill="#E08A57"/>
+          </g>
+          <line x1="95" y1="107" x2="128" y2="107"
+                stroke="#E08A57" stroke-width="0.75" stroke-opacity="0.7" shape-rendering="crispEdges"/>
+          <text x="111" y="131"
+            text-anchor="middle"
+            font-family="'Fraunces', Georgia, serif"
+            font-weight="700" font-size="30" fill="#F3EEE4"
+            letter-spacing="-1">DUALFORM</text>
+          <text x="111" y="150"
+            text-anchor="middle"
+            font-family="'Inter', system-ui, sans-serif"
+            font-weight="500" font-size="9.5" fill="#9A8C70"
+            letter-spacing="6">PROPERTY CO.</text>
+        </svg>
+      </div>
+
+      <!-- Icon only: Sandstone -->
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 124" width="148" height="124">
+          <rect width="148" height="124" fill="#F3EEE4"/>
+          <!-- 128*1.0=128px wide, centred in 148: offset=10, height 106+12pad=118 -->
+          <g transform="translate(10,9)" shape-rendering="geometricPrecision">
+            <polygon points="24,0 72,0 48,96 0,96"        fill="#0F3D33"/>
+            <polygon points="80,10 128,10 104,106 56,106" fill="#C8643C"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Icon only: Forest Green -->
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 124" width="148" height="124">
+          <rect width="148" height="124" fill="#0F3D33"/>
+          <g transform="translate(10,9)" shape-rendering="geometricPrecision">
+            <polygon points="24,0 72,0 48,96 0,96"        fill="#F3EEE4"/>
+            <polygon points="80,10 128,10 104,106 56,106" fill="#E08A57"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Favicon / Meta avatar (rounded square) -->
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+          <rect width="100" height="100" fill="#F3EEE4" rx="18"/>
+          <!-- scale: 128*0.57=73px wide, centred in 100: (100-73)/2=13.5 -->
+          <g transform="translate(14,5) scale(0.57)" shape-rendering="geometricPrecision">
+            <polygon points="24,0 72,0 48,96 0,96"        fill="#0F3D33"/>
+            <polygon points="80,10 128,10 104,106 56,106" fill="#C8643C"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Favicon reversed -->
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+          <rect width="100" height="100" fill="#0F3D33" rx="18"/>
+          <g transform="translate(14,5) scale(0.57)" shape-rendering="geometricPrecision">
+            <polygon points="24,0 72,0 48,96 0,96"        fill="#F3EEE4"/>
+            <polygon points="80,10 128,10 104,106 56,106" fill="#E08A57"/>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ─── PALETTE ─────────────────────────────────────────────────────────── -->
+  <div class="section">
+    <p class="section-label">Colour Palette</p>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-box" style="background:#0F3D33;"></div>
+        <p>Forest Green<br>#0F3D33<br>Primary</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#C8643C;"></div>
+        <p>Terracotta<br>#C8643C<br>Accent / CTA</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#F3EEE4; border-color:#E2D9C7;"></div>
+        <p>Sandstone<br>#F3EEE4<br>Background</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#1E1B16;"></div>
+        <p>Ink<br>#1E1B16<br>Body text</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#9A8C70;"></div>
+        <p>Clay Grey<br>#9A8C70<br>Secondary text</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#5E8C6A;"></div>
+        <p>Sage<br>#5E8C6A<br>Positive figures</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#E08A57;"></div>
+        <p>Terracotta Lt<br>#E08A57<br>Reversed only</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── USAGE NOTES ───────────────────────────────────────────────────── -->
+  <div class="section">
+    <p class="section-label">Usage Notes</p>
+    <div class="usage-card">
+      <div class="do">
+        <p><strong>Do</strong>
+          Keep flat and two-tone · Recolour only within the defined palette ·
+          Maintain clear space equal to one cap height on all sides ·
+          Switch to icon-only below 120px wordmark width
+        </p>
+      </div>
+      <div class="dont">
+        <p><strong>Don't</strong>
+          Add gradients, shadows, or 3D effects · Use blue (#1B5FAA family) ·
+          Include house, roof, or key iconography · Render in plain black &amp; white only ·
+          Stretch, skew, or restack the lockup outside defined variants
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
+  <div style="margin-top: 72px; padding-top: 24px; border-top: 1px solid #2E2B24;">
+    <p style="font-size: 9px; color: #2E2B24; letter-spacing: 2.5px; text-transform: uppercase;">
+      Dualform Property Co. · dualform.com.au · Internal Use Only
+    </p>
+  </div>
+
+</body>
+</html>

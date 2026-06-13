@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Strategy Call | Dualform Property Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #1E1B16;
+      background: #F3EEE4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ───────────────────────────────────────── */
+    .nav {
+      background: #F3EEE4;
+      border-bottom: 1px solid #E2D9C7;
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-inner {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .logo-main { font-family: 'Fraunces', serif; font-weight: 700; font-size: 17px; color: #0F3D33; letter-spacing: -0.4px; line-height: 1; }
+    .logo-sub { font-size: 8px; font-weight: 500; letter-spacing: 5px; color: #9A8C70; text-transform: uppercase; line-height: 1; display: block; margin-top: 2px; }
+
+    /* ── PROGRESS STEPS ────────────────────────────── */
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .progress-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .progress-step-dot {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .progress-step.done .progress-step-dot { background: #5E8C6A; color: white; }
+    .progress-step.done .progress-step-label { color: #5E8C6A; }
+    .progress-step.active .progress-step-dot { background: #0F3D33; color: #F3EEE4; }
+    .progress-step.active .progress-step-label { color: #0F3D33; font-weight: 600; }
+    .progress-step.pending .progress-step-dot { background: #E2D9C7; color: #9A8C70; }
+    .progress-step.pending .progress-step-label { color: #C4BAB0; }
+    .progress-connector {
+      width: 28px; height: 1px;
+      background: #E2D9C7;
+      margin: 0 6px;
+    }
+    .progress-connector.done { background: #5E8C6A; }
+
+    /* ── HERO ──────────────────────────────────────── */
+    .hero {
+      background: #0F3D33;
+      padding: 64px 32px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      bottom: -40px;
+      right: -60px;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8643C;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(32px, 5vw, 52px);
+      color: #F3EEE4;
+      letter-spacing: -1px;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+    .hero-rule {
+      width: 40px;
+      height: 2px;
+      background: #C8643C;
+      margin: 20px auto;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #9A8C70;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── PAGE CONTENT ──────────────────────────────── */
+    .page { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── WHAT'S IN THE CALL ────────────────────────── */
+    .call-details {
+      background: white;
+      border: 1px solid #E2D9C7;
+      border-radius: 14px;
+      padding: 36px;
+      margin-top: -32px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .call-details-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #0F3D33;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+    .call-details-sub { font-size: 13px; color: #9A8C70; margin-bottom: 28px; }
+    .call-specs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #E2D9C7;
+    }
+    .call-spec {
+      text-align: center;
+      padding: 16px 12px;
+      background: #F3EEE4;
+      border-radius: 10px;
+      border: 1px solid #E2D9C7;
+    }
+    .call-spec-icon { font-size: 18px; margin-bottom: 6px; }
+    .call-spec-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #9A8C70; margin-bottom: 4px; display: block; }
+    .call-spec-value { font-size: 13.5px; font-weight: 600; color: #0F3D33; }
+    .call-benefits { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .call-benefit {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .call-benefit-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: #0F3D33;
+      color: #F3EEE4;
+      font-family: 'Fraunces', serif;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .call-benefit-text h4 { font-size: 14.5px; font-weight: 600; color: #0F3D33; margin-bottom: 2px; }
+    .call-benefit-text p { font-size: 13px; color: #9A8C70; line-height: 1.55; }
+
+    /* ── BOOKING WIDGET ────────────────────────────── */
+    .booking-section {
+      padding: 40px 0 0;
+    }
+    .booking-section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: #0F3D33;
+      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+    .booking-section-sub { font-size: 13px; color: #9A8C70; margin-bottom: 24px; }
+    .booking-widget-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #E2D9C7;
+      background: white;
+      min-height: 580px;
+    }
+    /*
+      BOOKING WIDGET:
+      Replace the placeholder below with your actual Calendly or Cal.com embed.
+      Calendly:  <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-LINK" style="min-width:320px;height:580px;"></div>
+                 <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+      Cal.com:   <script src="https://app.cal.com/embed/embed.js"></script>
+                 <cal-inline calLink="YOUR-USERNAME/30min"></cal-inline>
+    */
+    .booking-placeholder {
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+      text-align: center;
+      background: #F3EEE4;
+    }
+    .booking-placeholder-mark {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #0F3D33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .booking-placeholder h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      color: #0F3D33;
+      font-weight: 700;
+    }
+    .booking-placeholder p { font-size: 13.5px; color: #9A8C70; max-width: 340px; line-height: 1.6; }
+    .booking-placeholder-code {
+      background: #1E1B16;
+      color: #9A8C70;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-align: left;
+      width: 100%;
+      max-width: 400px;
+      line-height: 1.7;
+    }
+    .booking-placeholder-code span { color: #C8643C; }
+    /* Testing bypass: remove this button in production */
+    .bypass-btn {
+      display: inline-block;
+      margin-top: 8px;
+      background: #0F3D33;
+      color: #F3EEE4;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .bypass-label { font-size: 10px; color: #C4BAB0; letter-spacing: 1px; margin-top: 4px; display: block; }
+
+    /* ── GUARANTEE ─────────────────────────────────── */
+    .guarantee {
+      margin: 32px 0;
+      background: #EDE7DA;
+      border-radius: 12px;
+      padding: 28px 32px;
+      border: 1px solid #E2D9C7;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .guarantee-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #0F3D33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .guarantee h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      color: #0F3D33;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+    .guarantee p { font-size: 13.5px; color: #9A8C70; line-height: 1.7; }
+    .guarantee p strong { color: #0F3D33; }
+
+    /* ── FOOTER ────────────────────────────────────── */
+    .footer {
+      background: #1A1712;
+      padding: 32px;
+      margin-top: 64px;
+    }
+    .footer-inner { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-left { display: flex; align-items: center; gap: 10px; }
+    .footer-main { font-family: 'Fraunces', serif; font-size: 14px; color: #F3EEE4; font-weight: 700; }
+    .footer-divider { width: 1px; height: 20px; background: #2E2B24; }
+    .footer-sub { font-size: 11px; color: #3E3A34; letter-spacing: 2px; text-transform: uppercase; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 11px; color: #3E3A34; text-decoration: none; }
+    .footer-links a:hover { color: #9A8C70; }
+    .footer-disclaimer { max-width: 800px; margin: 16px auto 0; padding-top: 16px; border-top: 1px solid #2E2B24; font-size: 10.5px; color: #2E2B24; }
+
+    @media (max-width: 640px) {
+      .call-specs { grid-template-columns: 1fr 1fr; }
+      .progress-step .progress-step-label { display: none; }
+      .hero { padding: 48px 20px 60px; }
+      .call-details { padding: 24px; }
+      .guarantee { flex-direction: column; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <svg width="28" height="24" viewBox="0 0 128 106">
+          <polygon points="24,0 72,0 48,96 0,96" fill="#0F3D33"/>
+          <polygon points="80,10 128,10 104,106 56,106" fill="#C8643C"/>
+        </svg>
+        <div style="width:1px;height:24px;background:#C8643C;opacity:0.4;margin:0 3px;"></div>
+        <div>
+          <span class="logo-main">DUALFORM</span>
+          <span class="logo-sub">Property Co.</span>
+        </div>
+      </a>
+
+      <!-- Progress indicator -->
+      <div class="progress-bar">
+        <div class="progress-step done">
+          <div class="progress-step-dot">✓</div>
+          <span class="progress-step-label">Details</span>
+        </div>
+        <div class="progress-connector done"></div>
+        <div class="progress-step active">
+          <div class="progress-step-dot">2</div>
+          <span class="progress-step-label">Book Call</span>
+        </div>
+        <div class="progress-connector"></div>
+        <div class="progress-step pending">
+          <div class="progress-step-dot">3</div>
+          <span class="progress-step-label">Confirmed</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <div class="hero">
+    <svg class="hero-bg" width="360" height="300" viewBox="0 0 128 106" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+      <polygon points="24,0 72,0 48,96 0,96" fill="#F3EEE4"/>
+      <polygon points="80,10 128,10 104,106 56,106" fill="#C8643C"/>
+    </svg>
+    <span class="hero-eyebrow">Your Roadmap is on its way</span>
+    <h1 class="hero-title">Now let's map out<br>your investment path.</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">
+      Book your free 30-minute Duplex Strategy Call below.
+      We'll look at your position and outline exactly what a Dualform project could look like for you.
+    </p>
+  </div>
+
+  <!-- ── PAGE CONTENT ──────────────────────────────────── -->
+  <div class="page">
+
+    <!-- What's in the call -->
+    <div class="call-details">
+      <h3 class="call-details-title">What happens in your strategy call</h3>
+      <p class="call-details-sub">A 30-minute conversation — no cost, no pressure, just honest information.</p>
+
+      <div class="call-specs">
+        <div class="call-spec">
+          <div class="call-spec-icon">📞</div>
+          <span class="call-spec-label">Format</span>
+          <span class="call-spec-value">Phone or video</span>
+        </div>
+        <div class="call-spec">
+          <div class="call-spec-icon">⏱</div>
+          <span class="call-spec-label">Duration</span>
+          <span class="call-spec-value">30 minutes</span>
+        </div>
+        <div class="call-spec">
+          <div class="call-spec-icon">💰</div>
+          <span class="call-spec-label">Cost</span>
+          <span class="call-spec-value">Completely free</span>
+        </div>
+        <div class="call-spec">
+          <div class="call-spec-icon">👤</div>
+          <span class="call-spec-label">With</span>
+          <span class="call-spec-value">Senior advisor</span>
+        </div>
+      </div>
+
+      <ul class="call-benefits">
+        <li class="call-benefit">
+          <div class="call-benefit-num">1</div>
+          <div class="call-benefit-text">
+            <h4>Your borrowing capacity &amp; project readiness</h4>
+            <p>We'll look at your current financial position and give you a clear picture of what you can access — before any commitment is needed.</p>
+          </div>
+        </li>
+        <li class="call-benefit">
+          <div class="call-benefit-num">2</div>
+          <div class="call-benefit-text">
+            <h4>Which states and sites make sense right now</h4>
+            <p>Based on current land availability, yield data, and approval timelines, we'll identify the locations that best fit your goals.</p>
+          </div>
+        </li>
+        <li class="call-benefit">
+          <div class="call-benefit-num">3</div>
+          <div class="call-benefit-text">
+            <h4>A realistic project timeline and equity outcome</h4>
+            <p>We'll walk through what a typical project looks like for your situation — cost in, value out, and timeframe — with no figures inflated for effect.</p>
+          </div>
+        </li>
+        <li class="call-benefit">
+          <div class="call-benefit-num">4</div>
+          <div class="call-benefit-text">
+            <h4>Answers to every question you have</h4>
+            <p>Bring your list. No question is off limits. If duplex investment isn't right for you, we'll tell you honestly — that's the only way this works.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Booking widget -->
+    <div class="booking-section">
+      <h3 class="booking-section-title">Select a time that suits you</h3>
+      <p class="booking-section-sub">All times shown in your local timezone. Instant confirmation by email.</p>
+
+      <div class="booking-widget-wrap">
+        <!--
+          ═══════════════════════════════════════════════════════
+          BOOKING WIDGET — REPLACE THIS PLACEHOLDER BEFORE LAUNCH
+          ═══════════════════════════════════════════════════════
+          Option A — Calendly:
+            1. Remove the .booking-placeholder div below
+            2. Add: <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-SLUG/30min" style="min-width:320px;height:600px;"></div>
+            3. Add: <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+          Option B — Cal.com:
+            1. Remove the .booking-placeholder div below
+            2. Add: <cal-inline calLink="YOUR-USERNAME/duplex-strategy-call" style="min-height:600px;"></cal-inline>
+            3. Add: <script type="module" src="https://app.cal.com/embed/embed.js"></script>
+          ═══════════════════════════════════════════════════════
+        -->
+        <div class="booking-placeholder">
+          <div class="booking-placeholder-mark">
+            <svg width="28" height="28" viewBox="0 0 128 106">
+              <polygon points="24,0 72,0 48,96 0,96" fill="#F3EEE4"/>
+              <polygon points="80,10 128,10 104,106 56,106" fill="#E08A57"/>
+            </svg>
+          </div>
+          <h4>Booking widget goes here</h4>
+          <p>Connect your Calendly or Cal.com link to replace this section. The widget will display your live calendar with available times.</p>
+          <div class="booking-placeholder-code">
+            <span>Replace with:</span><br>
+            Calendly embed — calendly.com/YOUR-LINK<br>
+            Cal.com embed — app.cal.com/YOUR-LINK
+          </div>
+          <!-- Remove this button in production — for testing flow only -->
+          <a href="confirmation.html" class="bypass-btn">Preview confirmation page →</a>
+          <span class="bypass-label">TESTING ONLY — REMOVE BEFORE LAUNCH</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zero Pressure Guarantee -->
+    <div class="guarantee">
+      <div class="guarantee-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M9 12l2 2 4-4M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" stroke="#F3EEE4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Zero Pressure Guarantee</h4>
+        <p>
+          <strong>No pitch. No close. No pressure.</strong> Our strategy calls are built around giving you an honest picture of what's possible for your situation — nothing more. If duplex development isn't the right fit for where you are right now, we'll tell you that directly. Your time is as valuable as ours.
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <svg width="20" height="17" viewBox="0 0 128 106" aria-hidden="true">
+          <polygon points="24,0 72,0 48,96 0,96" fill="#F3EEE4"/>
+          <polygon points="80,10 128,10 104,106 56,106" fill="#E08A57"/>
+        </svg>
+        <div class="footer-divider"></div>
+        <span class="footer-main">DUALFORM</span>
+        <div class="footer-divider"></div>
+        <span class="footer-sub">dualform.com.au</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">← Back</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+    <p class="footer-disclaimer">
+      © 2025 Dualform Property Co. · General information only. Not financial advice. Always consult a licensed financial adviser before making investment decisions.
+    </p>
+  </footer>
+
+</body>
+</html>
